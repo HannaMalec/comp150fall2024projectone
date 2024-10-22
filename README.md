@@ -112,3 +112,7 @@ Here is the project directory structure:
 
 Enjoy your adventure!
 
+#How our Game works
+#Play as the character monopoly_man
+#You combat with different NPCs to gain money
+#Character with most money will win
