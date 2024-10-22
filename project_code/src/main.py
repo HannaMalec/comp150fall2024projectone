@@ -32,6 +32,15 @@ class Character:
         self.name = name
         self.strength = Statistic("Strength", description="Strength is a measure of physical power.")
         self.intelligence = Statistic("Intelligence", description="Intelligence is a measure of cognitive ability.")
+        self.dexterity = Statistic("Dexterity", description="Dexterity is a measure of performing intricate tasks.")
+        self.constitution = Statistic("Constitution", description="Constitution is a measure of physical resilience.")
+        self.vitality = Statistic("Vitality", description="Vitality is a measure of liveliness(HP).")
+        self.endurance = Statistic("Endurance", description="Endurance is a measure of the ability to recover from injury and fatigue.")
+        self.wisdom = Statistic("Wisdom", description="Wisdom is a measure of the ability to make decisions under pressure.")
+        self.knowledge = Statistic("Knowledge", description="Knowledge is a measure of the amount of learned information.")
+        self.willpower = Statistic("Willpower", description="Willpower is a measure of mental resilience.")
+        self.spirit = Statistic("Spirit", description="Spirit is the measure of the aptitude for otherworldly acts.")
+        self.capacity = Statistic("Capacity", description="Capacity is a measure of the potential related to specific sources.")
         # Add more stats as needed
 
     def __str__(self):
