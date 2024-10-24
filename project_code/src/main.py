@@ -44,10 +44,10 @@ class Character:
         # Add more stats as needed
 
     def __str__(self):
-        return f"Character: {self.name}, Strength: {self.strength}, Intelligence: {self.intelligence}"
+        return f"Character: {self.name}, Strength: {self.strength}, Intelligence: {self.intelligence}, Dexterity: {self.dexterity}, Constitution: {self.constitution}, Vitality: {self.vitality}, Endurance: {self.edurance}, Wisdom: {self.wisdom}, Knowledge: {self.knowledge}, Willpower: {self.willpower}, Spirit: {self.spirit}, Capacity: {self.capacity}"
 
     def get_stats(self):
-        return [self.strength, self.intelligence]  # Extend this list if there are more stats
+        return [self.strength, self.intelligence, self.dexterity, self.constitution, self.vitality, self.endurance, self.wisdom, self.knowledge, self.willpower, self.spirit, self.capacity]  # Extend this list if there are more stats
 
 
 class Event:
