@@ -44,10 +44,10 @@ class TestEvent(unittest.TestCase):
         self.event_data = {
             "primary_attribute": "Intelligence",
             "secondary_attribute": "Strength",
-            "prompt_text": "A mysterious door blocks your path, with a riddle inscribed. What will you do?",
-            "pass": {"message": "You solved the riddle and pushed the door open. You may proceed."},
-            "fail": {"message": "You failed to solve the riddle and push the door open. You must find another way."},
-            "partial_pass": {"message": "You managed to solve the riddle or push the door, but not both."}
+            "prompt_text": "monopoly_man: A mysterious door blocks your path, with a riddle inscribed. What will you do?",
+            "pass": {"message": "monopoly_man: You solved the riddle and pushed the door open. You may proceed."},
+            "fail": {"message": "monopoly_man: You failed to solve the riddle and push the door open. You must find another way."},
+            "partial_pass": {"message": "monopoly_man: You managed to solve the riddle or push the door, but not both."}
         }
         self.event = Event(self.event_data)
 

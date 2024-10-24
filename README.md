@@ -113,6 +113,8 @@ Here is the project directory structure:
 Enjoy your adventure!
 
 #How our Game works
-#Play as the character monopoly_man
-#You combat with different NPCs to gain money
-#Character with most money will win
+#Narrator is the monopoly_man
+#Player has a choice between four characters(monopoly pieces): battleship, race_car, top_hat, and thimble
+#You combat with different NPCs to gain money(NPC's will be names of Monopoly Properties) and the player interacts with them when they are prompted with "would you like to buy this property: Y or N"
+#Total amount of moneu will be displayed during the game
+#If Character runs out of money(money less then certain amount) the player will be elimanated
