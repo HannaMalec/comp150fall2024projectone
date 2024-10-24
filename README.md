@@ -114,6 +114,12 @@ Enjoy your adventure!
 
 #How our Game works
 
+#GAME
+   #Roll Die to generate a number and space to move forward
+   #Each NPC is assigned to a space on the virtual board 
+
+   #Each event is randomly generated: Chance Events, Community Chest, and Property Tax
+
 #STORYLINE
    #Narrator is the monopoly_man
    #Player has a choice between four characters(monopoly pieces): battleship, race_car, top_hat, and thimble
