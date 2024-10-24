@@ -111,7 +111,7 @@ class UserInputParser:
         return input(prompt)
 
     def select_party_member(self, party: List[Character]) -> Character:
-        print("Choose a party member:")
+        print("monopoly_man: Please choose a piece to play as:")
         for idx, member in enumerate(party):
             print(f"{idx + 1}. {member.name}")
         choice = int(self.parse("Enter the number of the chosen party member: ")) - 1
