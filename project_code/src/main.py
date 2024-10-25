@@ -105,6 +105,12 @@ class Game:
     def check_game_over(self):
         return len(self.party) == 0
 
+class Die:
+    def __init__(self, sides: int = 6):
+        self.sides = sides
+
+    def roll(self) -> int:
+        return random.randint(1, self.sides)
 
 class UserInputParser:
     def parse(self, prompt: str) -> str:

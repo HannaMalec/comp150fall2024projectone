@@ -28,6 +28,17 @@ class TestStatistic(unittest.TestCase):
         self.strength.modify(-1000)
         self.assertEqual(self.strength.value, self.strength.min_value)
 
+
+class TestDie(unittest.TestCase):
+    def test_roll(self):
+        die = Die()
+        result = die.roll()
+        self.assertTrue(1 <= result <= 6, "Die roll result out of range")
+
+if __name__=='__main__':
+    unittest.main()
+
+
 class TestCharacter(unittest.TestCase):
 
     def setUp(self):
