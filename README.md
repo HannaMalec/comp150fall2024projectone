@@ -128,3 +128,5 @@ Enjoy your adventure!
 #MONEY_COUNT
    #Total amount of moneu will be displayed during the game
    #If Character runs out of money(money less then certain amount) the player will be eliminated
+#DICE_ROLL
+   #Rolls dice to move the character spaces in the game
