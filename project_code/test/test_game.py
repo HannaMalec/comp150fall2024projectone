@@ -38,6 +38,54 @@ class TestDie(unittest.TestCase):
 if __name__=='__main__':
     unittest.main()
 
+class TestUserInputParser(UserInputParser):
+    def __init__(self, inputs):
+        self.inputs = inputs
+        self.index = 0
+
+    def parse(self, prompt: str) -> str:
+        return self.inputs[self.index]
+
+    def next_input(self):
+        self.index += 1
+
+class TestUserInputParserMethods(unittest.TestCase):
+    def test_select_party_member_valid_choice(self):
+        party = [Character("Warrior"), Character("Mage")]
+        parser = TestUserInputParser(["1"])  # Simulate valid input
+        
+        selected_member = parser.select_party_member(party)
+        
+        self.assertEqual(selected_member.name, "Warrior")
+
+    def test_select_party_member_invalid_choice(self):
+        party = [Character("Warrior"), Character("Mage")]
+        parser = TestUserInputParser(["3", "1"])  # Invalid then valid input
+        
+        selected_member = parser.select_party_member(party)
+        
+        self.assertEqual(selected_member.name, "Warrior")
+
+    def test_select_stat_valid_choice(self):
+        character = Character("Warrior")
+        parser = TestUserInputParser(["2"])  # Simulate valid input
+        
+        selected_stat = parser.select_stat(character)
+        
+        self.assertEqual(selected_stat.name, "Intelligence")
+        self.assertEqual(selected_stat.value, 8)
+
+    def test_select_stat_invalid_choice(self):
+        character = Character("Warrior")
+        parser = TestUserInputParser(["3", "1"])  # Invalid then valid input
+        
+        selected_stat = parser.select_stat(character)
+        
+        self.assertEqual(selected_stat.name, "Strength")
+        self.assertEqual(selected_stat.value, 10)
+
+if __name__ == '__main__':
+    unittest.main()
 
 class TestCharacter(unittest.TestCase):
 
