@@ -117,19 +117,33 @@ class UserInputParser:
         return input(prompt)
 
     def select_party_member(self, party: List[Character]) -> Character:
-        print("monopoly_man: Please choose a piece to play as:")
-        for idx, member in enumerate(party):
-            print(f"{idx + 1}. {member.name}")
-        choice = int(self.parse("monopoly_man: Enter the number of the chosen piece: ")) - 1
-        return party[choice]
+        while True:
+            print("Please choose a piece to play as:")
+            for idx, member in enumerate(party):
+                print(f"{idx + 1}. {member.name}")
+            try:
+                choice = int(self.parse("Enter the number of the chosen piece: ")) - 1
+                if 0 <= choice < len(party):
+                    return party[choice]
+                else:
+                    print("Invalid choice, please try again.")
+            except ValueError:
+                print("Invalid input, please enter a number.")
 
     def select_stat(self, character: Character) -> Statistic:
-        print(f"Choose a stat for {character.name}:")
-        stats = character.get_stats()
-        for idx, stat in enumerate(stats):
-            print(f"{idx + 1}. {stat.name} ({stat.value})")
-        choice = int(self.parse("monopoly_man: enter the number of the stat to use: ")) - 1
-        return stats[choice]
+        while True:
+            print(f"Choose a stat for {character.name}:")
+            stats = character.get_stats()
+            for idx, stat in enumerate(stats):
+                print(f"{idx + 1}. {stat.name} ({stat.value})")
+            try:
+                choice = int(self.parse("Enter the number of the stat to use: ")) - 1
+                if 0 <= choice < len(stats):
+                    return stats[choice]
+                else:
+                    print("Invalid choice, please try again.")
+            except ValueError:
+                print("Invalid input, please enter a number.")
 
 
 def load_events_from_json(file_path: str) -> List[Event]:
