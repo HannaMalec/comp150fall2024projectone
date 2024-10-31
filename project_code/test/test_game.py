@@ -1,11 +1,11 @@
 import sys
 import os
+import unittest
 
 # Add the root directory of the project to the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from project_code.src.main import Statistic, Character, Event
-import unittest
+from project_code.src.main import Statistic, Character, Event, GameBoard, Die, UserInputParser
 
 class TestStatistic(unittest.TestCase):
 
@@ -29,6 +29,30 @@ class TestStatistic(unittest.TestCase):
         self.assertEqual(self.strength.value, self.strength.min_value)
 
 
+class TestGameBoard(unittest.TestCase):
+
+    def setUp(self):
+        self.events = ["Event 1", "Event 2", "Event 3"]
+        self.board = GameBoard(self.events)
+
+    def test_initial_position(self):
+        self.assertEqual(self.board.position, 0)
+
+    def test_move_character(self):
+        self.board.move_character(1)
+        self.assertEqual(self.board.position, 1)
+
+    def test_move_character_wrap_around(self):
+        self.board.move_character(5)  # Move to position 5
+        self.board.move_character(2)  # Move to position 2
+        self.assertEqual(self.board.position, 2)
+
+    def test_assign_event(self):
+        self.board.move_character(1)
+        event = self.board.assign_event()
+        self.assertEqual(event, "Event 2")
+
+
 class TestDie(unittest.TestCase):
     def test_roll(self):
         die = Die()
@@ -37,6 +61,7 @@ class TestDie(unittest.TestCase):
 
 if __name__=='__main__':
     unittest.main()
+
 
 class TestUserInputParser(UserInputParser):
     def __init__(self, inputs):
@@ -48,6 +73,7 @@ class TestUserInputParser(UserInputParser):
 
     def next_input(self):
         self.index += 1
+
 
 class TestUserInputParserMethods(unittest.TestCase):
     def test_select_party_member_valid_choice(self):
@@ -87,6 +113,7 @@ class TestUserInputParserMethods(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
+
 class TestCharacter(unittest.TestCase):
 
     def setUp(self):
@@ -96,6 +123,7 @@ class TestCharacter(unittest.TestCase):
         self.assertEqual(self.character.name, "Hero")
         self.assertEqual(self.character.strength.name, "Strength")
         self.assertEqual(self.character.intelligence.name, "Intelligence")
+
 
 class TestEvent(unittest.TestCase):
 

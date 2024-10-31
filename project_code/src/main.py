@@ -28,6 +28,13 @@ class Statistic:
 
 
 class Character:
+    def __init__(self, name: str):
+        self.name = name
+        self.position = 0  # Start at position 0
+
+    def update_position(self, new_position: int):
+        self.position = new_position
+
     def __init__(self, name: str = "Bob"):
         self.name = name
         self.strength = Statistic("Strength", description="Strength is a measure of physical power.")
@@ -111,6 +118,28 @@ class Die:
 
     def roll(self) -> int:
         return random.randint(1, self.sides)
+    
+    def roll_two_dice(self) -> int:
+        return self.roll() + self.roll() #Roll dice two times and return the total
+    
+class GameBoard:
+    def __init__(self, events: List[str]):
+        self.events = events
+        self.position = 0  # Start at position 0
+
+    def move_character(self, spaces: int):
+        self.position += spaces
+        print(f"Moved to position: {self.position}")
+
+        # If you exceed the number of spaces on the board in Monopoly, wrap around
+        if self.position >= len(self.events):
+            self.position = self.position % len(self.events)
+            print("You've wrapped around the board!")
+
+    def assign_event(self):
+        event = self.events[self.position]
+        print(f"Event at position {self.position}: {event}")
+        return event
 
 class UserInputParser:
     def parse(self, prompt: str) -> str:
@@ -146,11 +175,10 @@ class UserInputParser:
                 print("Invalid input, please enter a number.")
 
 
-def load_events_from_json(file_path: str) -> List[Event]:
+def load_events_from_json(file_path: str) -> List[str]:
     with open(file_path, 'r') as file:
         data = json.load(file)
-    return [Event(event_data) for event_data in data]
-
+    return [event_data['prompt_text'] for event_data in data]  
 
 def start_game():
     parser = UserInputParser()
@@ -160,13 +188,47 @@ def start_game():
         Character("top_hat"),
         Character("thimble")
     ]
+
     # Load events from the JSON file
     events = load_events_from_json('project_code/location_events/location_1.json')
+    board = GameBoard(events)  # Initialize the GameBoard with events
+    die = Die()  # Create a Die instance
 
-    locations = [Location(events)]
-    game = Game(parser, characters, locations)
-    game.start()
+    # Game loop for multiple players or sessions
+    while True:
+        print("\nChoose your character:")
+        for idx, character in enumerate(characters):
+            print(f"{idx + 1}. {character.name}")
+        
+        choice = int(parser.parse("Enter the number of your chosen character: ")) - 1
+        player = characters[choice]
+        print(f"monopoly_man: You have chosen: {player.name}")
 
+        # Player's turn
+        while True:
+            input("monopoly_man: Press Enter to roll the dice...")
+            roll_result = die.roll_two_dice()
+            print(f"monopoly_man: You rolled: {roll_result}")
+
+            board.move_character(roll_result)  # Move the player on the board
+            event = board.assign_event()  # Get the event for the new position
+
+            # Handle specific events
+            if event == "monopoly_man: Go to Jail":
+                print("monopoly_man: You are now in Jail!")
+                # Implement jail logic as needed
+                break  # End the player's turn
+
+            # Add other event responses as needed
+            print(f"monopoly_man: You encountered: {event}")
+
+            if input("monopoly_man: Continue playing your turn? (y/n): ").lower() != 'y':
+                break  # Exit the player's turn loop
+
+        if input("monopoly_man: Do you want to continue the game? (y/n): ").lower() != 'y':
+            break  # Exit the game loop
+
+    print("Game Over!")
 
 if __name__ == '__main__':
     start_game()

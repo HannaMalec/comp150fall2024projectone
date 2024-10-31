@@ -1,32 +1,58 @@
-[{
-  "primary_attribute": "Intelligence",
-  "secondary_attribute": "Strength",
-  "prompt_text": "monopoly_man: A mysterious door blocks your path, with a riddle inscribed. What will you do?",
-  "pass": {
-    "message": "monopoly_man: You solved the riddle and pushed the door open. You may proceed."
-  },
-  "fail": {
-    "message": "monopoly_man: You failed to solve the riddle and push the door open. You must find another way."
-  },
-  "partial_pass": {
-    "message": "monopoly_man: You managed to solve the riddle or push the door, but not both. You made some progress, but the door remains closed."
-  }
-},
+[
   {
     "primary_attribute": "Intelligence",
-    "secondary_attribute": "Strength",
-    "prompt_text": "monopoly_man: A mysterious door blocks your path, with a riddle inscribed. What will you do?",
+    "secondary_attribute": "Wealth",
+    "prompt_text": "monopoly_man: You arrive at Boardwalk. Do you want to buy it for $400 or invest in a hotel?",
     "pass": {
-      "message": "monopoly_man: You solved the riddle and pushed the door open. You may proceed."
+      "message": "monopoly_man: You wisely invested in a hotel! Your property value increases."
     },
     "fail": {
-      "message": "monopoly_man: You failed to solve the riddle and push the door open. You must find another way."
+      "message": "monopoly_man: You hesitated and missed the chance to buy Boardwalk. Someone else snatched it up!"
     },
     "partial_pass": {
-      "message": "monopoly_man: You managed to solve the riddle or push the door, but not both. You made some progress, but the door remains closed."
+      "message": "monopoly_man: You bought Boardwalk but didn’t invest in a hotel. Your gains are limited."
+    }
+  },
+  {
+    "primary_attribute": "Charm",
+    "secondary_attribute": "Negotiation",
+    "prompt_text": "monopoly_man: You meet a rival property owner. Will you negotiate a trade?",
+    "pass": {
+      "message": "monopoly_man: Your negotiation skills shine! You secured a fantastic trade."
+    },
+    "fail": {
+      "message": "monopoly_man: The rival outsmarted you. No trade today!"
+    },
+    "partial_pass": {
+      "message": "monopoly_man: You managed to get a minor trade, but not what you wanted."
+    }
+  },
+  {
+    "primary_attribute": "Luck",
+    "secondary_attribute": "Wisdom",
+    "prompt_text": "monopoly_man: You draw a Chance card! It's a wild card, but beware of the hidden costs.",
+    "pass": {
+      "message": "monopoly_man: You cleverly played the Chance card to your advantage!"
+    },
+    "fail": {
+      "message": "monopoly_man: That Chance card backfired. You lose some money!"
+    },
+    "partial_pass": {
+      "message": "monopoly_man: You played the card but at a cost. You gain some, but lose a little too."
+    }
+  },
+  {
+    "primary_attribute": "Charisma",
+    "secondary_attribute": "Wealth",
+    "prompt_text": "monopoly_man: You land on a Community Chest space. Draw a card and face the challenge!",
+    "pass": {
+      "message": "monopoly_man: You drew a 'Get Out of Jail Free' card! A lucky break!"
+    },
+    "fail": {
+      "message": "monopoly_man: Oops! You drew a card that requires you to pay $50 in taxes."
+    },
+    "partial_pass": {
+      "message": "monopoly_man: You drew a card that gives you some cash but also requires a payment."
     }
   }
-
-
-
 ]
