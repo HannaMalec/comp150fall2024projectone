@@ -200,7 +200,7 @@ def start_game():
         for idx, character in enumerate(characters):
             print(f"{idx + 1}. {character.name}")
         
-        choice = int(parser.parse("Enter the number of your chosen character: ")) - 1
+        choice = int(parser.parse("monopoly_man: Enter the number of your chosen character: ")) - 1
         player = characters[choice]
         print(f"monopoly_man: You have chosen: {player.name}")
 
